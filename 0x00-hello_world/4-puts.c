@@ -4,7 +4,6 @@
  * 
  * Return:  zero if run successfully
  */
-
 int main(void)
 {
 	puts("\"Programming is like building a multilingual puzzle");
