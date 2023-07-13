@@ -1,5 +1,9 @@
-#include <stdio.h>
-int main (void) {
-	puts("Programming is like building a multilingual puzzle");
-	return 0;
+<stdio.h>
+/**
+ * The code print out string and return zero if run successfully
+ */
+
+int main(void) {
+	puts("Programming is like building a multilingual puzzle\n");
+	return (0);
 }
