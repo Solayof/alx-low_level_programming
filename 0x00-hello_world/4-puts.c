@@ -1,4 +1,4 @@
-<stdio.h>
+#include <stdio.h>
 /**
  * The code print out string and return zero if run successfully
  */
