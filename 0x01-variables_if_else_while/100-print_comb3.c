@@ -1,7 +1,7 @@
 #include <stdio.h>
 /**
- * main - main code entry
- * Print all possible combinations of two digits.
+ * main - main code entry 
+ * Description: Print all possible combinations of two digits.
  * Numbers must be separated by commas and a space.
  * 01 and 10 are considered as the same combination of the two digits.
  * Print only the smallest combination of two digits.
@@ -13,30 +13,30 @@
  */
 int main(void)
 {
-    int i, j, k;
+	int n, f, l;
 
-    i = 0;
+	n = 0;
 
-    while (i < 100)
-    {
-        j = i % 10; /* singles digit */
-        k = i / 10; /* doubles digit */
+	while (n < 100)
+	{
+		l = i % 10; /* first bit */
+		f = i / 10; /* second bit */
 
-        if (k < j)
-        {
-            putchar(k + '0');
-            putchar(j + '0');
+		if (l < f)
+		{
+			putchar(l + '0');
+			putchar(f + '0');
 
-            if (i < 89)
-            {
-                putchar(44);
-                putchar(32);
-            }
-        }
+			if (i < 89)
+			{
+				putchar(44);
+				putchar(32);
+			}
+		}
 
-        i++;
-    }
-    putchar('\n');
+		n++;
+	}
+	putchar('\n');
 
-    return (0);
+	return (0);
 }
