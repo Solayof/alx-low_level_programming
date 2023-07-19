@@ -4,14 +4,19 @@
  *
  * Return: Always 0.
  */
-void times_table(int n)
+void print_to_98(int n)
 {
 	if (n >= 98)
 	{
 		for (; n <= 98; n++)
-		{_putchar (',');
-                                _putchar (' ');
-			if (n < 10)
+		{
+			if (n < -9)
+			{
+				_putchar ((n / 10) + '0');
+				-putchar ((n % 10) + '0');
+				_putchar (',');
+                                _putchar (' ');                           }
+			else if (n = -9 && n < 10)
 			{
 				_putchar (n + '0');
 				_putchar (',');
