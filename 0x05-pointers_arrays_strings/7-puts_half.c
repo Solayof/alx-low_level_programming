@@ -9,13 +9,13 @@
 void puts_hlf(char *str)
 {
 	int len = 0, n = 0, i;
-	for (i = 0; str[i] = '\0'; i++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
 		len++;
 	}
-	if (len % 2 = 0)
+	if (len % 2 == 0)
 	{
-		for (n = len / 2; n < len && str[n] != '\0'; n++)
+		for (n = len / 2; n < len; n++)
 		{
 			_putchar(str[n]);
 		}
@@ -24,7 +24,7 @@ void puts_hlf(char *str)
 	else
 	{
 		n = (len - 1) / 2;
-		for (n; n < len && str[n] != '\0'; n++)
+		for (n; n < len; n++)
 		{
 			_putchar(str[n]);
 		}
