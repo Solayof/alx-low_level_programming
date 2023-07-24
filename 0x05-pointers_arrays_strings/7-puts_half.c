@@ -24,7 +24,7 @@ void puts_hlf(char *str)
 	else
 	{
 		n = (len - 1) / 2;
-		for (n; n < len; n++)
+		for (; n < len; n++)
 		{
 			_putchar(str[n]);
 		}
