@@ -1,6 +1,6 @@
 #include "main.h"
 /*
- * puts_half - should print the second half of the string
+ * puts_half - prints the second half of the string followed by a new line
  * @str: string to print
  * If the number of characters is odd,
  * the function should print the last n characters of the string,
