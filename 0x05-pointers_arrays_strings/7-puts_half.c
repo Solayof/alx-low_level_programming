@@ -6,7 +6,7 @@
  * where n = (length_of_the_string - 1) / 2
  */
 
-void puts_hlf(char *str)
+void puts_half(char *str)
 {
 	int len = 0, n = 0, i;
 	for (i = 0; str[i] != '\0'; i++)
