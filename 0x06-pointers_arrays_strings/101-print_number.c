@@ -28,6 +28,6 @@ void print_number(int n)
 	{
 		print_number(num / 10);
 	}
-	_putchar('0' + (num % 10));
+	_putchar(num % 10);
 }
 
