@@ -9,11 +9,6 @@ void print_number(int n)
 {
 	unsigned int num;
 
-	if (n < 10 && n >= 0)
-	{
-		_putchar('0' + n);
-		return;
-	}
 	if (n < 0)
 	{
 		num = -n;
@@ -24,9 +19,10 @@ void print_number(int n)
 		num = n;
 	}
 
-	if (num >= 10)
+	while (num >= 10)
 	{
-		print_number(num / 10);
+		_putchar(num / 10);
+		num /= 10;
 	}
 	_putchar(num % 10);
 }
