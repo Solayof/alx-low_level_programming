@@ -1,4 +1,4 @@
-include "main.h"
+#include "main.h"
 
 /**
  * _strstr - returns pointer to first char of matching substring
