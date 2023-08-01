@@ -1,6 +1,7 @@
 #include <stdio.h>
+
 /**
- * main - main code entry 
+ * main - main code entry
  * Description: Print all possible combinations of two digits.
  * Numbers must be separated by commas and a space.
  * 01 and 10 are considered as the same combination of the two digits.
@@ -15,7 +16,7 @@ int main(void)
 {
 	int n, f, l;
 
-	n = 0;
+	n = 0;7
 
 	while (n < 100)
 	{
