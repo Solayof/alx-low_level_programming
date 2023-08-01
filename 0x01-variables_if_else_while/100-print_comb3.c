@@ -16,7 +16,7 @@ int main(void)
 {
 	int n, f, l;
 
-	n = 0;7
+	n = 0;
 
 	while (n < 100)
 	{
