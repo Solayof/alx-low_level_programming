@@ -20,15 +20,15 @@ int main(void)
 
 	while (n < 100)
 	{
-		l = i % 10; /* first bit */
-		f = i / 10; /* second bit */
+		l = n % 10; /* first bit */
+		f = n / 10; /* second bit */
 
 		if (l < f)
 		{
 			putchar(l + '0');
 			putchar(f + '0');
 
-			if (i < 89)
+			if (n < 89)
 			{
 				putchar(44);
 				putchar(32);
