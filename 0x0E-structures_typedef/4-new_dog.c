@@ -41,8 +41,6 @@ char *scpy(char *dest, char *src)
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *dog1;
-	char *copy_of_name;
-	char *copy_of_owner;
 
 	dog1 = malloc(sizeof(dog_t)); /* validate if dog1 initiated correctly */
 	if (dog1 == NULL)
