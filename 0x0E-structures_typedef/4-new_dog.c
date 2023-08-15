@@ -1,66 +1,83 @@
-#include "dog.h"
+#include <stdio.h>
 #include <stdlib.h>
+#include "dog.h"
+
 /**
- * _strdup - returns a pointer to a newly allocated space in memory, which
- * contains a copy of the string given as a parameter.
- * @str: string to copy
- *
- * Return: Pointer
+ * slen - find length of string
+ * @s: string
+ * Return: length
  */
-char *_strdup(char *str)
+int slen(char *s)
 {
-	int l, i;
-	char *s;
+	int i;
 
-	if (str == NULL)
-		return (0);
-
-	l = 0;
-	while (*(str + l))
-		l++;
-
-	s = malloc(sizeof(char) * l + 1);
-
-	if (s == 0)
-		return (0);
-
-	for (i = 0; i <= l; i++)
-	{
-		*(s + i) = *(str + i);
-	}
-	return (s);
+	for (i = 0; *(s + i); i++)
+		;
+	return (i);
 }
 /**
- * new_dog - creates a new dog
- * @name: name of dog
- * @age: age of dog
- * @owner: owner of dog
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * scpy - copies the string pointed to by src,
+ * including the terminating null byte (\0),
+ * to the buffer pointed to by dest
+ * @dest: copy source to this buffer
+ * @src: this is the source to copy
+ * Return: copy of original source
+ */
+char *scpy(char *dest, char *src)
+{
+	int i;
+
+	for (i = 0; i <= slen(src); i++)
+		dest[i] = src[i];
+	return (dest);
+}
+/**
+ * new_dog - create new instance of struct dog
+ * @name: member
+ * @age: member
+ * @owner: member
+ * Return: initialized instance of struct dog
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *new_dog;
+	dog_t *dog1;
+	char *copy_of_name;
+	char *copy_of_owner;
 
-	new_dog = malloc(sizeof(struct dog));
+	dog1 = malloc(sizeof(dog_t)); /* validate if dog1 initiated correctly */
+	if (dog1 == NULL)
+		return (NULL);
 
-	if (new_dog == 0 || name == 0 || owner == 0)
-		return (0);
+	dog1->age = age;
 
-	new_dog->name = _strdup(name);
-	if (new_dog->name == 0)
+	/* make copies of struct members and validate, else free on error */
+	/* set values of struct members to copies of arguments or set to NULL */
+	if (name != NULL)
 	{
-		free(new_dog);
-		return (0);
-	}
-	new_dog->age = age;
-	new_dog->owner = _strdup(owner);
-	if (new_dog->owner == 0)
+		dog1->name = malloc(slen(name) + 1);
+		if (dog1->name == NULL)
 		{
-			free(new_dog);
-			free(new_dog->name);
-			return (0);
+			free(dog1);
+			return (NULL);
 		}
-	return (new_dog);
+		scpy(dog1->name, name);
+	}
+	else
+		dog1->name = NULL;
+
+	if (owner != NULL)
+	{
+		dog1->owner = malloc(slen(owner) + 1);
+		if (dog1->owner == NULL)
+		{
+			free(copy_of_name);
+			free(dog1);
+			return (NULL);
+		}
+		scpy(dog1->owner, owner);
+	}
+	else
+		dog1->owner = NULL;
+
+	return (dog1);
 }
