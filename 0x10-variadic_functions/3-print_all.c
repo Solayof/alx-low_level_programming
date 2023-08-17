@@ -1,85 +1,78 @@
-#include <stdarg.h>
+#include <stdlib.h>
 #include <stdio.h>
+#include <stdarg.h>
 #include "variadic_functions.h"
-
 /**
- * print_char - prints char
- * @valist: valist
+ * print_int - prints an int
+ * @args: the list of args
  */
-void print_char(va_list valist)
+void print_int(va_list args)
 {
-	printf("%c", va_arg(valist, int));
+	printf("%d", va_arg(args, int));
 }
-
 /**
- * print_int - prints int
- * @valist: valist
- */
-void print_int(va_list valist)
+* print_char - prints a char
+* @args: the list of args
+*/
+void print_char(va_list args)
 {
-	printf("%d", va_arg(valist, int));
+	printf("%c", va_arg(args, int));
 }
-
 /**
- * print_float - prints float
- * @valist: valist
- */
-void print_float(va_list valist)
+* print_string - prints a string
+* @args: the list of args
+*/
+void print_string(va_list args)
 {
-	printf("%f", va_arg(valist, double));
-}
+	char *s = va_arg(args, char *);
 
-/**
- * print_string - prints string
- * @valist: valist
- */
-void print_string(va_list valist)
-{
-	char *s;
-
-	s = va_arg(valist, char *);
-
-	if (s == NULL)
+	if (!s)
 	{
 		printf("(nil)");
 		return;
 	}
 	printf("%s", s);
 }
-
 /**
- * print_all - print varying input of ints, chars, floats, and strings
- * @format: an array of chars signifying which data type to print
- */
+* print_float - prints floats
+* @args: the list of args
+*/
+void print_float(va_list args)
+{
+	printf("%f", va_arg(args, double));
+}
+/**
+* print_all - prints all
+* @format: formats of arg
+*/
 void print_all(const char * const format, ...)
 {
-	char *separator = "";
-	int i, j = 0;
-	va_list valist;
+	 datatype  types[] = {
+		 {'c', print_char},
+		 {'i', print_int},
+		 {'f', print_float},
+		 {'s', print_string},
+		 {'\0', NULL}};
+	 va_list args;
+	 char *sep1 = "", *sep2 = ", ";
+	 int i = 0, j;
 
-	datatype choice[] = { {'c', print_char},
-			      {'i', print_int},
-			      {'f', print_float},
-			      {'s', print_string},
-			      {'\0', NULL} };
-
-	/* iterate format; if datatype matched, access function via struct */
-	va_start(valist, format);
-	while (format != NULL && format[j] != '\0')
+	 va_start(args, format);
+	while (format !=  NULL && format[i] != '\0')
 	{
-		i = 0;
-		while (choice[i].letter != '\0')
+		j = 0;
+		while (types[j].letter != '\0')
 		{
-			if (choice[i].letter == format[j])
+			if (format[i] == types[j].letter)
 			{
-				printf("%s", separator);
-				choice[i].func(valist); /*access va_arg later*/
-				separator = ", ";
+				printf("%s", sep1);
+				types[j].func(args);
+				sep1 = sep2;
 			}
-			i++;
+			j++;
 		}
-		j++;
+		i++;
 	}
-	va_end(valist);
 	printf("\n");
+	va_end(args);
 }
