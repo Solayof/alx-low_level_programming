@@ -8,7 +8,7 @@ void print_all(const char * const format, ...)
 ;
 typedef struct 
 {
-	char *c;
+	char *letter;
 	void (*func)(va_list valist);
 } datatype;
 #endif
