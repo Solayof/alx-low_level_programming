@@ -1,0 +1,22 @@
+#include "lists.h"
+
+/**
+ * listint_len - print the number of node in a list
+ * @h: the head of the list given.
+ * Return: returns the number of node in a list.
+ */
+
+size_t listint_len(const listint_t *h)
+
+{
+	size_t num = 0;
+
+	if (h == NULL)
+		ruturn (num);
+	while (h->next != NULL)
+	{
+		num++;
+		h = h->next;
+	}
+	return (num);
+}
