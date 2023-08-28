@@ -11,8 +11,6 @@ size_t listint_len(const listint_t *h)
 {
 	size_t num = 0;
 
-	if (h == NULL)
-		ruturn (num);
 	while (h != NULL)
 	{
 		num++;
