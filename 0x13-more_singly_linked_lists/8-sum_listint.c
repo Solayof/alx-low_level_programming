@@ -1,6 +1,7 @@
 #include "lists.h"
 
-/*sum_listint - sum all the intigers stored by the node of a list.
+/**
+ * sum_listint - sum all the intigers stored by the node of a list.
  * @head: head pointer to the list.
  * Return: returns the sum of the intiger.
  */
