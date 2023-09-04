@@ -2,7 +2,7 @@
 
 /**
  * __exit - prints error messages and exits with exit value
- * @errora: num is either exit value or file descriptor
+ * @err: num is either exit value or file descriptor
  * @s: str is a name, either of the two filenames
  * @fd: file descriptor
  * Return: 0 on success
