@@ -1,6 +1,22 @@
 #include "main.h"
 
 /**
+ * slen - find the length of a string.
+ * @str: the string.
+ * Retrun: returns the length.
+ */
+
+int slen(char *str)
+{
+	int len;
+
+	for (len = 0; str[len] != '\0'; len++);
+
+	return (len);
+}
+
+
+/**
  * append_text_to_file - addd text to a file.
  * @filename: file to add txt to.
  * @text_content: text to add.
@@ -9,7 +25,7 @@
 
 int append_text_to_file(const char *filename, char *text_content)
 {
-	int fd, i = 0;
+	int fd; /*i = 0*/
 	int num_w;
 
 	if (filename == NULL)
@@ -25,9 +41,9 @@ int append_text_to_file(const char *filename, char *text_content)
 		return (1);
 	}
 
-	while (*text_content != '\0')
-		i++;
-	num_w = write(fd, text_content, i);
+	/*while (*text_content != '\0')*/
+	/*	i++;*/
+	num_w = write(fd, text_content, slen(text_content));
 	if (num_w == -1 || num_w != i)
 	{
 		close(fd);
