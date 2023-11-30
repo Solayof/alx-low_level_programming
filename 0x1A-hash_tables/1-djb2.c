@@ -8,13 +8,13 @@
 
 unsigned long int hash_djb2(const unsigned char *str)
 {
-	unsigned long int num = 9973;
+	unsigned long int num = 5381;
 	int i;
 
 	while (str)
 	{
 		i = *str;
-		num = ((num << 3) + num) + i;
+		num = ((num << 5) + num) + i;
 		str++;
 	}
 	return (num);
