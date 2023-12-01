@@ -1,53 +1,65 @@
 #include "hash_tables.h"
 
 /**
- * add_node - add node into the generated index
- * @head: node head
- * @key: key to generate index
- * @value: value to store in the generated index
- * Return: head of the hash table on success or NULL otherwise
+ * add_n_hash - adds a node at the beginning of a hash at a given index
+ *
+ * @head: head of the hash linked list
+ * @key: key of the hash
+ * @value: value to store
+ * Return: head of the hash
  */
-
-hash_node_t *add_node(hash_node_t **head, const char *key, const char *value)
+hash_node_t *add_n_hash(hash_node_t **head, const char *key, const char *value)
 {
-	hash_node_t *h = *head;
+	hash_node_t *tmp;
 
-	while (h)
+	tmp = *head;
+
+	while (tmp != NULL)
 	{
-		if (strcmp(key, h->key) == 0)
+		if (strcmp(key, tmp->key) == 0)
 		{
-			free(h->value);
-			h->value = strdup(value);
+			free(tmp->value);
+			tmp->value = strdup(value);
 			return (*head);
 		}
+		tmp = tmp->next;
 	}
-	h = malloc(sizeof(hash_node_t));
-	if (!h)
+
+	tmp = malloc(sizeof(hash_node_t));
+
+	if (tmp == NULL)
 		return (NULL);
-	h->key = strdup(key);
-	h->value = strdup(value);
-	h->next = *head;
-	*head = h;
+
+	tmp->key = strdup(key);
+	tmp->value = strdup(value);
+	tmp->next = *head;
+	*head = tmp;
+
 	return (*head);
 }
-/**
- * hash_table_set - add to hash table
- * @ht: the hash table pionter
- * @key: key to generate index
- * @value: value to store at the generated index
- * Return: 1 on successfull 0 otherwise
- */
 
+/**
+ * hash_table_set - adds a hash (key, value) to a given hash table
+ *
+ * @ht: pointer to the hash table
+ * @key: key of the hash
+ * @value: value to store
+ * Return: 1 if successes, 0 if fails
+ */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int k;
+	unsigned long int k_index;
 
-	if (!ht)
+	if (ht == NULL)
 		return (0);
-	if (!key || *key == '\0')
+
+	if (key == NULL || *key == '\0')
 		return (0);
-	k = key_index((unsigned char *)key, ht->size);
-	if (add_node(&(ht->array[k]), key, value) == NULL)
+
+	k_index = key_index((unsigned char *)key, ht->size);
+
+	if (add_n_hash(&(ht->array[k_index]), key, value) == NULL)
 		return (0);
+
 	return (1);
 }
