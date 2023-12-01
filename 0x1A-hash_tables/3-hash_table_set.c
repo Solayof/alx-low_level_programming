@@ -8,7 +8,7 @@
  * Return: head of the hash table on success or NULL otherwise
  */
 
-has_node_t *add_node(hash_node_t **head, const char *key, char *value)
+hash_node_t *add_node(hash_node_t **head, const char *key, const char *value)
 {
 	hash_node_t *h = *head;
 
