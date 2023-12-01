@@ -1,4 +1,4 @@
-#include "hash.h"
+#include "hash_tables.h"
 
 /**
  * hash_djb2 - generate random number from the given string

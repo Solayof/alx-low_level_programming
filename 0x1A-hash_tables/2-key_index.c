@@ -1,4 +1,4 @@
-#include "hash"
+#include "hash_tables.h"
 
 /**
  * key_index - generate index for hash table

@@ -1,4 +1,4 @@
-#include "hash.h"
+#include "hash_tables.h"
 
 /**
  * add_node - add node into the generated index

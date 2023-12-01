@@ -1,4 +1,4 @@
-#include "hash.h"
+#include "hash_tables.h"
 
 /**
  * hash_table_print - prints the keys and values of the hash table
