@@ -1,4 +1,4 @@
-#include "hash_tables.h"
+#include "hash.h"
 
 /**
  * shash_table_create - creates a shash table with a given size
